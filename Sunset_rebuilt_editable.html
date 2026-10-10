@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ff9a62">
+<title>Sunset — Connect Everywhere</title>
+<style>
+:root{--ink:#28213a;--muted:#70677c;--sun:#ff9a62;--pink:#f66b91;--cream:#fff8f1;--card:#fff;--line:#f0e5e1}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(160deg,#fff4e8,#ffe7ec 55%,#f1e8ff);min-height:100vh}
+header{position:sticky;top:0;z-index:3;background:#fffaf4ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:1.45rem;font-weight:850;letter-spacing:-.05em}.brand span{color:#ed6e77}.coins{font-size:.82rem;font-weight:750;background:#fff0cc;padding:8px 11px;border-radius:999px}
+main{max-width:740px;margin:auto;padding:18px 14px 100px}.intro{padding:20px;border-radius:24px;background:linear-gradient(120deg,#ffbc83,#ff819f);color:#452b43;box-shadow:0 10px 30px #c36a4920}.intro h1{font-size:1.8rem;margin:0 0 7px}.intro p{margin:0;line-height:1.5}
+.tabs{display:flex;gap:8px;margin:16px 0;overflow:auto}.tabs button,.action{border:0;border-radius:999px;padding:10px 15px;font-weight:750;cursor:pointer;background:#fff;color:var(--ink);font-size:.92rem}.tabs button.active,.action.primary{background:#302540;color:white}
+.card{background:var(--card);border:1px solid #f3e8e6;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 8px 22px #4a23400a}.row{display:flex;align-items:center;gap:10px}.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ffc17e,#ff80a5);font-size:1.25rem;flex-shrink:0}.user{font-weight:800}.sub{font-size:.84rem;color:var(--muted)}.post-text{line-height:1.5;margin:14px 0;white-space:pre-wrap}.video-wrap{position:relative;background:#211c2c;border-radius:15px;overflow:hidden;min-height:170px;display:grid;place-items:center}.video-wrap video{display:block;width:100%;max-height:70vh;aspect-ratio:16/9;object-fit:contain;background:#17131d}.placeholder{color:white;text-align:center;padding:35px 16px;line-height:1.5}.sound{position:absolute;right:10px;bottom:10px;border:0;border-radius:999px;background:#20182cdd;color:white;padding:10px 13px;font-weight:700;cursor:pointer}.post-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.action{background:#f8f1f4}.section-title{font-size:1.1rem;margin:22px 2px 8px}.shop-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{border:1px solid var(--line);border-radius:18px;padding:14px;background:white}.product-art{height:100px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#ffe0af,#ffb4c7);font-size:2.3rem}.product h3{font-size:1rem;margin:10px 0 3px}.product p{font-size:.84rem;color:var(--muted);margin:0 0 8px}.product strong{display:block;margin-bottom:10px}.hidden{display:none!important}.field{width:100%;padding:12px 14px;border:1px solid #e9dfe3;border-radius:12px;margin:6px 0 12px;font:inherit;background:white}.notice{font-size:.84rem;color:var(--muted);line-height:1.5}.bottom{position:fixed;bottom:0;left:0;right:0;background:#fffaf4f2;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:10px 6px calc(10px + env(safe-area-inset-bottom));z-index:4}.bottom button{border:0;background:transparent;font-weight:700;color:var(--muted);padding:6px;cursor:pointer;font-size:.9rem}.bottom button.active{color:#e66a78}.file-label{display:inline-block}.status{padding:10px 12px;border-radius:12px;background:#fff0cc;margin:10px 0;font-size:.9rem;line-height:1.4}
+@media(min-width:650px){main{padding-top:24px}.intro h1{font-size:2.2rem}.shop-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header><div class="brand">🌅 <span>Sunset</span></div><div class="coins">🪙 Coins: demo only</div></header>
+<main>
+<section class="intro"><h1>Your world, at golden hour.</h1><p>Share moments, discover creators, and explore little shops — wherever you are.</p></section>
+<div class="tabs" role="tablist" aria-label="Main sections"><button class="active" data-tab="feed">For You</button><button data-tab="shops">Shops</button><button data-tab="profile">My Profile</button></div>
+<div id="status" class="status hidden" role="status"></div>
+<section id="feed">
+<article class="card">
+<div class="row"><div class="avatar">🌻</div><div><div class="user">Maya's Moments</div><div class="sub">@maya · sample creator</div></div></div>
+<p class="post-text">A little sunshine for your day. What is one thing that made you smile today? ☀️</p>
+<div class="video-wrap"><div class="placeholder">🎬<br>Choose a video below to test playback on this device.<br><small>This sample area is not a real hosted video.</small></div></div>
+<div class="post-actions"><button class="action" onclick="like(this)">♡ Like</button><button class="action" onclick="follow(this)">＋ Follow</button></div>
+</article>
+<div id="userPosts"></div>
+</section>
+<section id="shops" class="hidden">
+<h2 class="section-title">Explore shops</h2><p class="notice">Example listings only. Purchases and payments are not enabled in this preview.</p>
+<div class="shop-grid">
+<div class="product"><div class="product-art">🌺</div><h3>Sunset Bloom Tote</h3><p>Colorful everyday bag</p><strong>$18.00 · sample</strong><button class="action" onclick="demoAlert()">View item</button></div>
+<div class="product"><div class="product-art">☕</div><h3>Golden Hour Mug</h3><p>A bright start to your day</p><strong>$12.00 · sample</strong><button class="action" onclick="demoAlert()">View item</button></div>
+<div class="product"><div class="product-art">🌅</div><h3>Sunset Sticker</h3><p>Little sunset, big mood</p><strong>$4.00 · sample</strong><button class="action" onclick="demoAlert()">View item</button></div>
+</div>
+</section>
+<section id="profile" class="hidden">
+<div class="card"><div class="row"><div class="avatar">😊</div><div><div class="user">Your Sunset profile</div><div class="sub">Local preview · no account yet</div></div></div>
+<h2 class="section-title">Create a post</h2><label for="postText">What would you like to share?</label><textarea id="postText" class="field" rows="3" placeholder="Write a friendly post..."></textarea>
+<label for="videoFile"><strong>Add a video from your device</strong></label><input id="videoFile" class="field" type="file" accept="video/*">
+<div id="videoPreviewWrap" class="video-wrap hidden"><video id="videoPreview" controls playsinline preload="metadata" style="display:block;width:100%;max-height:70vh;aspect-ratio:16/9;object-fit:contain;background:#17131d"></video></div>
+<p class="notice">Choose a video to preview it here first. This is a local test; it does not upload or publish the video.</p>
+<button class="action primary" onclick="createPost()">Preview post</button><p class="notice">Posts and selected videos are temporary previews on this device. They are not saved to an account or uploaded.</p></div>
+<div class="card"><h2 class="section-title">Sunset Coins</h2><p>Coins are design placeholders only and have no cash value in this preview.</p><p class="notice">Real rewards, creator earnings, and shop payments need secure backend services and clear rules before launch.</p></div>
+</section>
+</main>
+<nav class="bottom"><button class="active" onclick="switchTab('feed')">🏠 Home</button><button onclick="switchTab('shops')">🛍️ Shops</button><button onclick="switchTab('profile')">👤 Profile</button></nav>
+<script>
+let currentVideoURL = null;
+function showStatus(message){const s=document.getElementById('status');s.textContent=message;s.classList.remove('hidden');}
+function switchTab(name){['feed','shops','profile'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==name));document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.bottom button').forEach((b,i)=>b.classList.toggle('active',['feed','shops','profile'][i]===name));window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+function like(b){const liked=b.dataset.liked==='true';b.dataset.liked=String(!liked);b.textContent=liked?'♡ Like':'♥ Liked';}
+function follow(b){const following=b.dataset.following==='true';b.dataset.following=String(!following);b.textContent=following?'＋ Follow':'✓ Following';}
+function demoAlert(){showStatus('This is a sample shop. Checkout and payment are not connected yet.');}
+document.getElementById('videoFile').addEventListener('change',function(){
+ const file=this.files&&this.files[0];if(!file)return;
+ if(!file.type.startsWith('video/')){showStatus('Please choose a video file.');return;}
+ if(currentVideoURL)URL.revokeObjectURL(currentVideoURL);
+ currentVideoURL=URL.createObjectURL(file);
+ const preview=document.getElementById('videoPreview');
+ preview.pause(); preview.src=currentVideoURL; preview.load();
+ document.getElementById('videoPreviewWrap').classList.remove('hidden');
+ preview.onerror=()=>showStatus('This video format or codec is not supported by this browser. Try an MP4 encoded with H.264 video and AAC audio.');
+ preview.onloadedmetadata=()=>showStatus('Video loaded. Press Play on the video controls to test it. This preview stays on this device.');
+});
+function createPost(){
+ const text=document.getElementById('postText').value.trim();
+ const file=document.getElementById('videoFile').files[0];
+ if(!text&&!file){showStatus('Write a post or choose a video first.');return;}
+ const article=document.createElement('article');article.className='card';
+ const row=document.createElement('div');row.className='row';row.innerHTML='<div class="avatar">😊</div><div><div class="user">Your preview post</div><div class="sub">Only in this browser session</div></div>';article.appendChild(row);
+ if(text){const p=document.createElement('p');p.className='post-text';p.textContent=text;article.appendChild(p);}
+ if(file&&currentVideoURL){
+  const wrap=document.createElement('div');wrap.className='video-wrap';
+  const video=document.createElement('video');video.src=currentVideoURL;video.controls=true;video.playsInline=true;video.preload='metadata';video.setAttribute('aria-label','Your selected video');
+  const sound=document.createElement('button');sound.className='sound';sound.type='button';sound.textContent='🔊 Sound on';
+  sound.addEventListener('click',()=>{video.muted=!video.muted;sound.textContent=video.muted?'🔇 Sound off':'🔊 Sound on';});
+  video.addEventListener('error',()=>showStatus('This video format could not be played by the browser. Try a common MP4 video.'));wrap.appendChild(video);wrap.appendChild(sound);article.appendChild(wrap);
+ }
+ const actions=document.createElement('div');actions.className='post-actions';actions.innerHTML='<button class="action" type="button">♡ Like</button><button class="action" type="button">＋ Follow</button>';
+ actions.children[0].addEventListener('click',()=>like(actions.children[0]));actions.children[1].addEventListener('click',()=>follow(actions.children[1]));article.appendChild(actions);
+ document.getElementById('userPosts').prepend(article);document.getElementById('postText').value='';
+ showStatus('Preview post added. It is not published or uploaded.');
+}
+</script>
+</body>
+</html>
