@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ff9a62">
+<title>Sunset — Connect Everywhere</title>
+<style>
+:root{--ink:#28213a;--muted:#70677c;--sun:#ff9a62;--pink:#f66b91;--cream:#fff8f1;--card:#fff;--line:#f0e5e1}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:linear-gradient(160deg,#fff4e8,#ffe7ec 55%,#f1e8ff);min-height:100vh}
+header{position:sticky;top:0;z-index:3;background:#fffaf4ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:1.45rem;font-weight:850;letter-spacing:-.05em}.brand span{color:#ed6e77}.coins{font-size:.88rem;font-weight:750;background:#fff0cc;padding:8px 11px;border-radius:999px}
+main{max-width:740px;margin:auto;padding:18px 14px 90px}.intro{padding:20px;border-radius:24px;background:linear-gradient(120deg,#ffbc83,#ff819f);color:#452b43;box-shadow:0 10px 30px #c36a4920}.intro h1{font-size:1.8rem;margin:0 0 7px}.intro p{margin:0;line-height:1.5}
+.tabs{display:flex;gap:8px;margin:16px 0;overflow:auto}.tabs button,.action{border:0;border-radius:999px;padding:10px 15px;font-weight:750;cursor:pointer;background:#fff;color:var(--ink)}.tabs button.active,.action.primary{background:#302540;color:white}
+.card{background:var(--card);border:1px solid #f3e8e6;border-radius:20px;padding:16px;margin:12px 0;box-shadow:0 8px 22px #4a23400a}.row{display:flex;align-items:center;gap:10px}.avatar{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#ffc17e,#ff80a5);font-size:1.25rem}.user{font-weight:800}.sub{font-size:.84rem;color:var(--muted)}.post-text{line-height:1.5;margin:14px 0}.video{aspect-ratio:16/9;border-radius:15px;background:linear-gradient(135deg,#ffb77e,#f786a5 55%,#8c78d5);display:grid;place-items:center;color:white;font-size:2.8rem;text-shadow:0 2px 12px #733e68}.post-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.action{background:#f8f1f4}.section-title{font-size:1.1rem;margin:22px 2px 8px}.shop-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.product{border:1px solid var(--line);border-radius:18px;padding:14px;background:white}.product-art{height:100px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#ffe0af,#ffb4c7);font-size:2.3rem}.product h3{font-size:1rem;margin:10px 0 3px}.product p{font-size:.84rem;color:var(--muted);margin:0 0 8px}.product strong{display:block;margin-bottom:10px}.hidden{display:none}.field{width:100%;padding:12px 14px;border:1px solid #e9dfe3;border-radius:12px;margin:6px 0 12px;font:inherit}.notice{font-size:.84rem;color:var(--muted);line-height:1.5}.bottom{position:fixed;bottom:0;left:0;right:0;background:#fffaf4f2;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:10px 6px calc(10px + env(safe-area-inset-bottom));z-index:4}.bottom button{border:0;background:transparent;font-weight:700;color:var(--muted);padding:6px;cursor:pointer}.bottom button.active{color:#e66a78}
+@media(min-width:650px){main{padding-top:24px}.intro h1{font-size:2.2rem}.shop-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header><div class="brand">🌅 <span>Sunset</span></div><div class="coins" id="coinCount">🪙 0 coins · demo</div></header>
+<main>
+<section class="intro"><h1>Your world, at golden hour.</h1><p>Share moments, discover creators, and explore little shops — wherever you are.</p></section>
+<div class="tabs" role="tablist"><button class="active" data-tab="feed">For You</button><button data-tab="shops">Shops</button><button data-tab="profile">My Profile</button></div>
+<section id="feed">
+<article class="card">
+<div class="row"><div class="avatar">🌻</div><div><div class="user">Maya's Moments</div><div class="sub">@maya · sample creator</div></div></div>
+<p class="post-text">A little sunshine for your day. What is one thing that made you smile today? ☀️</p>
+<div class="video" aria-label="Sample video placeholder">▶</div>
+<div class="post-actions"><button class="action" onclick="like(this)">♡ Like</button><button class="action" onclick="follow(this)">＋ Follow</button><button class="action" onclick="watch(this)">▶ Watched · demo</button></div>
+<p class="notice">Sample post only. Video playback, real uploads, accounts, and verified rewards are not connected yet.</p>
+</article>
+<article class="card">
+<div class="row"><div class="avatar">🎨</div><div><div class="user">Colorful Corner</div><div class="sub">@colorfulcorner · sample shop</div></div></div>
+<p class="post-text">Bright little things to make your day happier. Visit the Shops tab to browse sample products.</p>
+<div class="post-actions"><button class="action" onclick="follow(this)">＋ Follow</button><button class="action" onclick="switchTab('shops')">🛍️ View shop</button></div>
+</article>
+</section>
+<section id="shops" class="hidden">
+<h2 class="section-title">Explore shops</h2>
+<p class="notice">Example listings only. No purchases or payments are processed in this preview.</p>
+<div class="shop-grid">
+<div class="product"><div class="product-art">🌺</div><h3>Sunset Bloom Tote</h3><p>Colorful everyday bag</p><strong>$18.00 · sample</strong><button class="action" onclick="alert('This is a preview. Checkout is not connected yet.')">View item</button></div>
+<div class="product"><div class="product-art">☕</div><h3>Golden Hour Mug</h3><p>A bright start to your day</p><strong>$12.00 · sample</strong><button class="action" onclick="alert('This is a preview. Checkout is not connected yet.')">View item</button></div>
+<div class="product"><div class="product-art">🌅</div><h3>Sunset Sticker</h3><p>Little sunset, big mood</p><strong>$4.00 · sample</strong><button class="action" onclick="alert('This is a preview. Checkout is not connected yet.')">View item</button></div>
+</div>
+</section>
+<section id="profile" class="hidden">
+<div class="card"><div class="row"><div class="avatar">😊</div><div><div class="user">Your Sunset profile</div><div class="sub">Preview mode · no account yet</div></div></div><h2 class="section-title">Create a sample post</h2><label for="postText">What would you like to share?</label><textarea id="postText" class="field" rows="3" placeholder="Write a friendly post..."></textarea><button class="action primary" onclick="createPost()">Preview post</button><p class="notice">This only adds a post to this page during this visit. It does not upload to a server or save a real account.</p></div>
+<div class="card"><h2 class="section-title">Sunset Coins</h2><p>Coins are shown as a design preview. They have no cash value in this demo, and watching activity does not award real rewards yet.</p><p class="notice">Real rewards, ads, creator earnings, and shop payments require secure systems, clear rules, and provider approval.</p></div>
+</section>
+</main>
+<nav class="bottom"><button class="active" onclick="switchTab('feed')">🏠 Home</button><button onclick="switchTab('shops')">🛍️ Shops</button><button onclick="switchTab('profile')">👤 Profile</button></nav>
+<script>
+let coins=0;
+function switchTab(name){['feed','shops','profile'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==name));document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));document.querySelectorAll('.bottom button').forEach((b,i)=>b.classList.toggle('active',['feed','shops','profile'][i]===name));window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+function like(b){b.textContent=b.textContent.startsWith('♡')?'♥ Liked':'♡ Like';}
+function follow(b){b.textContent=b.textContent.includes('Follow')?'✓ Following':'＋ Follow';}
+function watch(b){b.textContent='✓ Demo watched';b.disabled=true;}
+function createPost(){const t=document.getElementById('postText').value.trim();if(!t){alert('Write something first.');return;}const a=document.createElement('article');a.className='card';a.innerHTML='<div class="row"><div class="avatar">😊</div><div><div class="user">Your preview post</div><div class="sub">Only on this device during this visit</div></div></div>';const p=document.createElement('p');p.className='post-text';p.textContent=t;a.appendChild(p);document.getElementById('profile').prepend(a);document.getElementById('postText').value='';}
+</script>
+</body>
+</html>
